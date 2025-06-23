@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ranking de Ejercicio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+  <div class="header-left">
+    <div class="logo">🏋️ Feria de la ciencia</div>
+  </div>
+
+  <div class="header-center">
+    <h2 class="header-title">Ranking de Ejercicios</h2>
+  </div>
+
+ 
+</header>
+
+
+  <div class="container">
+    <h1>Tabla de Clasificación</h1>
+    <p>Compite con tus compañeros y subí en el ranking</p>
+
+    <form id="form">
+      <input type="text" id="name" placeholder="Nombre del alumno" required />
+      <input type="number" id="series" placeholder="Series" required min="1" />
+      <input type="number" id="reps" placeholder="Repeticiones por serie" required min="1" />
+      <button type="submit">Agregar al ranking</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Alumno</th>
+          <th>Series</th>
+          <th>Repeticiones</th>
+          <th>Puntos</th>
+        </tr>
+      </thead>
+      <tbody id="rankingBody"></tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+
+</html>
