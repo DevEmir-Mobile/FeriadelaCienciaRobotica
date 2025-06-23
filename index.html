@@ -8,45 +8,65 @@
 </head>
 <body>
   <header>
-  <div class="header-left">
-    <div class="logo">🏋️ Feria de la ciencia</div>
-  </div>
-
-  <div class="header-center">
-    <h2 class="header-title">Ranking de Ejercicios</h2>
-  </div>
-
- 
-</header>
-
+    <div class="nav-container">
+      <div class="nav-left">
+        <span>Proyecto de Robótica</span>
+      </div>
+      <div class="nav-right">
+        <span class="page-title">Robot Contador de Ejercicios</span>
+      </div>
+    </div>
+  </header>
 
   <div class="container">
-    <h1>Tabla de Clasificación</h1>
-    <p>Compite con tus compañeros y subí en el ranking</p>
+    <h1>🤖 Ranking de Ejercicios</h1>
+    <p class="subtitle">Compite con tus compañeros usando nuestro robot contador de repeticiones</p>
 
-    <form id="form">
-      <input type="text" id="name" placeholder="Nombre del alumno" required />
-      <input type="number" id="series" placeholder="Series" required min="1" />
-      <input type="number" id="reps" placeholder="Repeticiones por serie" required min="1" />
-      <button type="submit">Agregar al ranking</button>
-    </form>
+    <div class="form-container">
+      <form id="form">
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="name">Nombre del alumno</label>
+            <input type="text" id="name" placeholder="Ingresa tu nombre" required />
+          </div>
+          <div class="input-group">
+            <label for="series">Series</label>
+            <input type="number" id="series" placeholder="0" required min="1" />
+          </div>
+          <div class="input-group">
+            <label for="reps">Repeticiones por serie</label>
+            <input type="number" id="reps" placeholder="0" required min="1" />
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Agregar al ranking</button>
+      </form>
+    </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Alumno</th>
-          <th>Series</th>
-          <th>Repeticiones</th>
-          <th>Puntos</th>
-        </tr>
-      </thead>
-      <tbody id="rankingBody"></tbody>
-    </table>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Alumno</th>
+            <th>Series</th>
+            <th>Repeticiones</th>
+            <th>Puntos</th>
+          </tr>
+        </thead>
+        <tbody id="rankingBody">
+          <tr>
+            <td colspan="5">
+              <div class="empty-state">
+                <div class="empty-state-icon">🏆</div>
+                <p>No hay participantes aún.<br>¡Sé el primero en agregar tu puntuación!</p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <script src="script.js"></script>
 </body>
-
-
 </html>
