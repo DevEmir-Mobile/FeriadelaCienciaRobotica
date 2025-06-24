@@ -30,6 +30,20 @@
             <input type="text" id="name" placeholder="Ingresa tu nombre" required />
           </div>
           <div class="input-group">
+            <label for="exerciseType">Tipo de ejercicio</label>
+            <select id="exerciseType" required>
+              <option value="">Selecciona un ejercicio</option>
+              <option value="flexiones">Flexiones</option>
+              <option value="sentadillas">Sentadillas</option>
+              <option value="abdominales">Abdominales</option>
+              <option value="burpees">Burpees</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="date">Fecha</label>
+            <input type="date" id="date" required />
+          </div>
+          <div class="input-group">
             <label for="series">Series</label>
             <input type="number" id="series" placeholder="0" required min="1" />
           </div>
@@ -48,14 +62,16 @@
           <tr>
             <th>Rank</th>
             <th>Alumno</th>
+            <th>Ejercicio</th>
+            <th>Fecha</th>
             <th>Series</th>
             <th>Repeticiones</th>
-            <th>Puntos</th>
+            <th class="points-col">Puntos</th>
           </tr>
         </thead>
         <tbody id="rankingBody">
           <tr>
-            <td colspan="5">
+            <td colspan="7">
               <div class="empty-state">
                 <div class="empty-state-icon">🏆</div>
                 <p>No hay participantes aún.<br>¡Sé el primero en agregar tu puntuación!</p>

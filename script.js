@@ -10,11 +10,23 @@ function getRankClass(rank) {
   return 'rank-other';
 }
 
+// Función para formatear la fecha sin desfase
+function formatDate(dateString) {
+  // dateString viene en formato 'YYYY-MM-DD'
+  const [year, month, day] = dateString.split('-');
+  // Crear una fecha local sin desfase
+  const meses = [
+    'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+    'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+  ];
+  return `${parseInt(day)} de ${meses[parseInt(month) - 1]} de ${year}`;
+}
+
 // Función para mostrar estado vacío
 function showEmptyState() {
   rankingBody.innerHTML = `
     <tr>
-      <td colspan="5">
+      <td colspan="7">
         <div class="empty-state">
           <div class="empty-state-icon">🏆</div>
           <p>No hay participantes aún.<br>¡Sé el primero en agregar tu puntuación!</p>
@@ -40,6 +52,8 @@ function updateTable() {
     row.innerHTML = `
       <td><span class="rank-badge ${rankClass}">${rank}</span></td>
       <td><strong>${item.name}</strong></td>
+      <td>${item.exerciseType}</td>
+      <td>${formatDate(item.date)}</td>
       <td>${item.series}</td>
       <td>${item.reps}</td>
       <td><span class="points-badge">${item.points}</span></td>
@@ -73,21 +87,23 @@ form.addEventListener('submit', e => {
   e.preventDefault();
 
   const name = document.getElementById('name').value.trim();
+  const exerciseType = document.getElementById('exerciseType').value;
+  const date = document.getElementById('date').value;
   const series = parseInt(document.getElementById('series').value);
   const reps = parseInt(document.getElementById('reps').value);
 
   // Validación mejorada
-  if (!name || isNaN(series) || isNaN(reps) || series < 1 || reps < 1) {
-    alert('Por favor, ingrese un nombre y valores positivos válidos.');
+  if (!name || !exerciseType || !date || isNaN(series) || isNaN(reps) || series < 1 || reps < 1) {
+    alert('Por favor, complete todos los campos con valores válidos.');
     showButtonFeedback(false);
     return;
   }
 
-  // Cálculo de puntos usando tu fórmula original
+  // Cálculo de puntos
   const points = series * reps * 10;
   
   // Agregar los datos al array
-  data.push({ name, series, reps, points });
+  data.push({ name, exerciseType, date, series, reps, points });
   
   // Ordenar por puntos (mayor a menor)
   data.sort((a, b) => b.points - a.points);
@@ -95,11 +111,11 @@ form.addEventListener('submit', e => {
   // Actualizar la tabla
   updateTable();
   
+  // Mostrar feedback
+  showButtonFeedback(true);
+  
   // Limpiar el formulario
   form.reset();
-  
-  // Mostrar feedback de éxito
-  showButtonFeedback(true);
 });
 
 // Inicializar la tabla con estado vacío

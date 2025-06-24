@@ -200,6 +200,49 @@ h1 {
   transform: translateY(-1px);
 }
 
+.input-group select,
+.input-group input[type="date"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: white;
+  color: #1e293b;
+}
+
+.input-group select:focus,
+.input-group input[type="date"]:focus {
+  border-color: #4f46e5;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.input-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231e293b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+.input-group select:invalid {
+  color: #94a3b8;
+}
+
+.input-group input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.input-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
 .submit-btn {
   width: 100%;
   padding: 1rem;
@@ -387,6 +430,26 @@ tr:last-child td {
   }
 }
 
+/* Responsive tabla: scroll horizontal en móviles */
+@media (max-width: 768px) {
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  table {
+    min-width: 600px;
+    width: 100%;
+  }
+  th.points-col, td.points-col {
+    background: #e0f2fe;
+    color: #0e7490;
+    font-weight: bold;
+    position: sticky;
+    right: 0;
+    z-index: 2;
+  }
+}
+
 @media (max-width: 480px) {
   .container {
     margin: 0.25rem;
@@ -415,6 +478,11 @@ tr:last-child td {
   .points-badge {
     padding: 0.2rem 0.5rem;
     font-size: 0.75rem;
+    background: #0ea5e9;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(14,165,233,0.08);
   }
 }
 
@@ -438,4 +506,11 @@ tr:last-child td {
   .container {
     padding: 2rem;
   }
+}
+
+/* Siempre resaltar la columna de puntos */
+th.points-col, td.points-col {
+  background: #e0f2fe;
+  color: #0e7490;
+  font-weight: bold;
 }
